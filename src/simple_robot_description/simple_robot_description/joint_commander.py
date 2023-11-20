@@ -12,38 +12,38 @@ class TrajectoryPublisher(Node):
         # Call the constructor of the parent class (Node) using super()
         super().__init__('robot_joint_trajectory_publisher')
         
-        # # Set the timer period to 1 second
-        # timer_period = 1
+        # Set the timer period to 1 second
+        timer_period = 1
 
-        # # Create a timer and associate it with the timer_callback method
-        # self.timer = self.create_timer(timer_period, self.timer_callback)
+        # Create a timer and associate it with the timer_callback method
+        self.timer = self.create_timer(timer_period, self.timer_callback)
 
-        # # Create a publisher for the JointTrajectory message on the specified topic
-        # self.trajectory_publisher = self.create_publisher(JointTrajectory,"/joint_trajectory_controller/joint_trajectory", 10)
+        # Create a publisher for the JointTrajectory message on the specified topic
+        self.trajectory_publisher = self.create_publisher(JointTrajectory,"/joint_trajectory_controller/joint_trajectory", 10)
 
 
-    # # Callback method for the timer
-    # def timer_callback(self):
+    # Callback method for the timer
+    def timer_callback(self):
 
-    #     # Create a list containing a single value (-0.7) representing goal positions
-    #     goal_positions = [-0.7,]
+        # Create a list containing a single value (-0.7) representing goal positions
+        goal_positions = [-1.2,]
         
-    #     # Create a JointTrajectoryPoint message and set its positions and time_from_start attributes
-    #     point_msg = JointTrajectoryPoint()
-    #     point_msg.positions = goal_positions
-    #     point_msg.time_from_start = Duration(sec=2)
+        # Create a JointTrajectoryPoint message and set its positions and time_from_start attributes
+        point_msg = JointTrajectoryPoint()
+        point_msg.positions = goal_positions
+        point_msg.time_from_start = Duration(sec=2)
 
 
-    #     # Create a list of joint names containing a single value ('joint1')
-    #     joints = ['joint1']
+        # Create a list of joint names containing a single value ('joint1')
+        joints = ['joint1']
 
-    #     # Create a JointTrajectory message and set its joint_names attribute and append the point_msg to its points attribute
-    #     my_trajectory_msg = JointTrajectory()
-    #     my_trajectory_msg.joint_names = joints
-    #     my_trajectory_msg.points.append(point_msg)
+        # Create a JointTrajectory message and set its joint_names attribute and append the point_msg to its points attribute
+        my_trajectory_msg = JointTrajectory()
+        my_trajectory_msg.joint_names = joints
+        my_trajectory_msg.points.append(point_msg)
         
-    #     # Publish the JointTrajectory message
-    #     self.trajectory_publisher.publish(my_trajectory_msg)
+        # Publish the JointTrajectory message
+        self.trajectory_publisher.publish(my_trajectory_msg)
 
 
 # Main function
